@@ -4,14 +4,14 @@ class Movie:
         self.title = title
         self.showtime = showtime
         self.available_seats = available_seats
-        self.booked_seats = booked_seats
+        self.__booked_seats = booked_seats
 
     def book_seat(self):
         if self.available_seats:
             print("Booking seat for  movie:", self.title , "at", self.showtime, "Which seat would you like to book? Available seats:", self.available_seats)
             booked_seat = input("Enter the seat number you want to book: ")
             if booked_seat in self.available_seats:
-                self.booked_seats.append(booked_seat)
+                self._Movie__booked_seats.append(booked_seat)
                 self.available_seats.remove(booked_seat)
                 return True
             else:
@@ -21,8 +21,8 @@ class Movie:
             return False
 
     def cancel_booking(self):
-        if self.booked_seats:
-            canceled_seat = self.booked_seats.pop()
+        if self._Movie__booked_seats:
+            canceled_seat = self._Movie__booked_seats.pop()
             self.available_seats.append(canceled_seat)
             return True
         else:
